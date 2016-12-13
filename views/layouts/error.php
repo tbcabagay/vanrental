@@ -54,53 +54,8 @@ BootboxAsset::register($this);
     ga('create', 'UA-88822037-1', 'auto');
     ga('send', 'pageview');
 </script>
-    <?php
-    NavBar::begin([
-        'id' => 'mainNav',
-        'innerContainerOptions' => ['class' => 'container-fluid'],
-        'containerOptions' => ['id' => 'bs-example-navbar-collapse-1'],
-        'brandLabel' => Yii::$app->params['appTitle'],
-        'brandUrl' => '#page-top',
-        'brandOptions' => ['class' => 'page-scroll'],
-        'options' => [
-            'class' => 'navbar-default navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'About', 'url' => '#about', 'linkOptions' => ['class' => 'page-scroll']],
-            ['label' => 'Services', 'url' => '#services', 'linkOptions' => ['class' => 'page-scroll']],
-            ['label' => 'Reservations', 'url' => '#reservations', 'linkOptions' => ['class' => 'page-scroll']],
-            ['label' => 'Clients', 'url' => '#clients', 'linkOptions' => ['class' => 'page-scroll']],
-            ['label' => 'Testimonials', 'url' => '#testimonial', 'linkOptions' => ['class' => 'page-scroll']],
-            ['label' => 'Contact', 'url' => '#contact', 'linkOptions' => ['class' => 'page-scroll']],
-        ],
-    ]);
-    NavBar::end();
-    ?>
 
     <?= $content ?>
-
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Let's Get In Touch!</h2>
-                    <hr class="primary">
-                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>Mobile# 0915 341 5179<br>Landline# (049) 536-1904</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p><a href="mailto:galangnorte@gmail.com">galangnorte@gmail.com</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
 
 <?php $this->endBody() ?>
 </body>

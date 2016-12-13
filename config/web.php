@@ -1,6 +1,7 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
+$config = parse_ini_file('/home/tbcabagay/web.ini');
 
 $config = [
     'id' => 'app-practical-b',
@@ -26,7 +27,15 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => $config['vanrental_mailer_email'],
+                'password' => $config['vanrental_mailer_password'],
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -41,6 +50,33 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [],
+        ],
+        'formatter' => [
+            'timeZone' => 'Asia/Manila',
+            'currencyCode' => 'PHP',
+        ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'google' => [
+                    'class' => 'yii\authclient\clients\Google',
+                    'clientId' => $config['vanrental_client_id'],
+                    'clientSecret' => $config['vanrental_client_secret'],
+                ],
+            ],
+        ],
+    ],
+    'modules' => [
+        'gridview' => [
+            'class' => '\kartik\grid\Module'
+        ],
+        'markdown' => [
+            'class' => 'kartik\markdown\Module',
+            'smartyPants' => false,
+        ],
+        'administrator' => [
+            'class' => 'app\modules\administrator\Module',
         ],
     ],
     'params' => $params,
